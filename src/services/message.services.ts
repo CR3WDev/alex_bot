@@ -7,3 +7,6 @@ export const saveMessage = async (message: Message) => {
 export const getMessages = async () => {
   return await messageData.getMessage();
 };
+export const getMessagesById = async (roomId: string) => {
+  return await messageData.getMessageById(roomId);
+};

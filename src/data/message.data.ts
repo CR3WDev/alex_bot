@@ -22,3 +22,15 @@ export const getMessage = async () => {
     ],
   });
 };
+export const getMessageById = async (roomId: string) => {
+  return await prisma.message.findMany({
+    where: {
+      roomId,
+    },
+    orderBy: [
+      {
+        time: "asc",
+      },
+    ],
+  });
+};
