@@ -14,5 +14,8 @@ bot.on("message", async (msg: TelegramBot.Message) => {
     type: "outgoing",
     time: new Date(),
   };
-  messageServices.saveMessage(message);
+  await messageServices.saveMessage(message);
 });
+export const sendMessage = (roomId: string, message: string) => {
+  bot.sendMessage(roomId, message);
+};
