@@ -3,7 +3,7 @@ import * as messageData from "../data/message.data";
 import { Message } from "../interface/message.interface";
 
 export const saveMessage = async (message: Message) => {
-  sendMessage(message.roomId, message.text);
+  if (message.type === "incoming") sendMessage(message.roomId, message.text);
   return await messageData.saveMessage(message);
 };
 export const getMessages = async () => {
