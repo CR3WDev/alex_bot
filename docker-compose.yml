@@ -6,6 +6,6 @@ services:
     environment:
       - "POSTGRES_USER=postgres"
       - "POSTGRES_PASSWORD=password"
-      - "POSTGRES_DB=alex_bot"
+      - "POSTGRES_DB=kube"
     ports:
       - "5441:5432"
