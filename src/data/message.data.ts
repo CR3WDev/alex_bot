@@ -1,9 +1,11 @@
 import { PrismaClient } from "@prisma/client";
 import { Message } from "../interface/message.interface";
+import { io } from "../server";
 
 const prisma = new PrismaClient();
 
 export const saveMessage = async (message: Message) => {
+  io.emit("receiveMessage", message);
   return await prisma.message.create({
     data: {
       roomId: message.roomId,
