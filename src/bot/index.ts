@@ -1,6 +1,7 @@
-import TelegramBot from "node-telegram-bot-api";
-import * as messageServices from "../services/message.services";
 import "dotenv/config";
+import TelegramBot from "node-telegram-bot-api";
+import { io } from "../server";
+import * as messageServices from "../services/message.services";
 
 const token = process.env.BOT_TOKEN;
 if (!token) throw new Error("Missing BOT_TOKEN");
@@ -15,6 +16,7 @@ bot.on("message", async (msg: TelegramBot.Message) => {
     time: new Date(),
   };
   await messageServices.saveMessage(message);
+  io.emit("receiveMessage", message);
   console.log(message);
 });
 export const sendMessage = (roomId: string, message: string) => {
